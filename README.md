@@ -1,0 +1,2 @@
+# diagnostico
+Diagnostico da Salespring
