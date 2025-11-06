@@ -235,6 +235,7 @@
 
         input[type="text"],
         input[type="email"],
+        input[type="tel"],
         input[type="number"],
         select {
             width: 100%;
@@ -248,6 +249,7 @@
 
         input[type="text"]:focus,
         input[type="email"]:focus,
+        input[type="tel"]:focus,
         input[type="number"]:focus,
         select:focus {
             outline: none;
@@ -587,7 +589,7 @@
                 <!-- Bloco 1: Identificação -->
                 <div class="form-screen" id="screen1">
                     <div class="progress-bar">
-                        <div class="progress-fill" style="width: 10%;"></div>
+                        <div class="progress-fill" style="width: 5%;"></div>
                     </div>
                     <h2 data-i18n="q1_title">Qual é o seu nome completo?</h2>
                     <div class="form-group">
@@ -601,46 +603,28 @@
 
                 <div class="form-screen" id="screen2">
                     <div class="progress-bar">
-                        <div class="progress-fill" style="width: 12%;"></div>
+                        <div class="progress-fill" style="width: 10%;"></div>
                     </div>
                     <h2 data-i18n="q2_title">Qual é o seu email?</h2>
                     <div class="form-group">
                         <input type="email" id="email" name="email" placeholder="seu.email@empresa.com" required>
+                        <p class="hint" data-i18n="q2_hint">Preferencialmente corporativo para garantir a entrega do seu diagnóstico.</p>
                     </div>
                     <div class="button-group">
                         <button type="button" class="btn-secondary" onclick="previousScreen()" data-i18n="btn_back">Voltar</button>
                         <button type="button" class="btn-primary" onclick="nextScreen()" data-i18n="btn_next">Próximo</button>
                     </div>
                 </div>
-
+                
+                <!-- NOVO CAMPO: Telefone -->
                 <div class="form-screen" id="screen3">
                     <div class="progress-bar">
                         <div class="progress-fill" style="width: 15%;"></div>
                     </div>
-                    <h2 data-i18n="q3_title">Qual é o seu cargo atual?</h2>
+                    <h2 data-i18n="q3_title">Qual é o seu telefone?</h2>
                     <div class="form-group">
-                        <div class="radio-group">
-                            <label class="radio-item">
-                                <input type="radio" name="cargo" value="founder" required>
-                                <span data-i18n="cargo_founder">Founder / CEO</span>
-                            </label>
-                            <label class="radio-item">
-                                <input type="radio" name="cargo" value="head_vendas" required>
-                                <span data-i18n="cargo_head">Head de Vendas / Gestor Comercial</span>
-                            </label>
-                            <label class="radio-item">
-                                <input type="radio" name="cargo" value="cmo" required>
-                                <span data-i18n="cargo_cmo">CMO / Marketing</span>
-                            </label>
-                            <label class="radio-item">
-                                <input type="radio" name="cargo" value="cs" required>
-                                <span data-i18n="cargo_cs">CS / Customer Success</span>
-                            </label>
-                            <label class="radio-item">
-                                <input type="radio" name="cargo" value="outro" required>
-                                <span data-i18n="cargo_outro">Outro</span>
-                            </label>
-                        </div>
+                        <input type="tel" id="phone" name="phone" placeholder="(XX) XXXXX-XXXX" required>
+                        <p class="hint" data-i18n="q3_hint">Seu número de contato para o caso de você solicitar uma conversa gratuita.</p>
                     </div>
                     <div class="button-group">
                         <button type="button" class="btn-secondary" onclick="previousScreen()" data-i18n="btn_back">Voltar</button>
@@ -648,13 +632,59 @@
                     </div>
                 </div>
 
+                <!-- CARGO ATUALIZADO -->
                 <div class="form-screen" id="screen4">
                     <div class="progress-bar">
                         <div class="progress-fill" style="width: 20%;"></div>
                     </div>
-                    <h2 data-i18n="q4_title">Qual é o nome da sua empresa?</h2>
+                    <h2 data-i18n="q4_title">Qual é a sua área de atuação?</h2>
                     <div class="form-group">
-                        <input type="text" id="empresa" name="empresa" placeholder="Digite o nome da empresa" required>
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="cargo" value="lideranca_executiva" required>
+                                <span data-i18n="cargo_lideranca_executiva">Liderança Executiva (CEO/CRO/CFO/Founder)</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="cargo" value="diretoria_comercial" required>
+                                <span data-i18n="cargo_diretoria_comercial">Diretoria Comercial/Vendas/RevOps</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="cargo" value="diretoria_marketing" required>
+                                <span data-i18n="cargo_diretoria_marketing">Diretoria de Marketing</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="cargo" value="diretoria_cs" required>
+                                <span data-i18n="cargo_diretoria_cs">Diretoria de Customer Success (CS)</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="cargo" value="gerencia_comercial" required>
+                                <span data-i18n="cargo_gerencia_comercial">Gerência Comercial/Vendas</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="cargo" value="gerencia_marketing" required>
+                                <span data-i18n="cargo_gerencia_marketing">Gerência de Marketing</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="cargo" value="gerencia_cs" required>
+                                <span data-i18n="cargo_gerencia_cs">Gerência de Customer Success (CS)</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="cargo" value="executivo_vendas" required>
+                                <span data-i18n="cargo_executivo_vendas">Executivo de Vendas / BDR / Vendedor / SDR</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="cargo" value="analista_marketing_cs" required>
+                                <span data-i18n="cargo_analista_marketing_cs">Analista de Marketing / CS</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="cargo" value="assistente_estagiario" required>
+                                <span data-i18n="cargo_assistente_estagiario">Assistente / Estagiário / Estudante</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="cargo" value="nao_informar">
+                                <span data-i18n="nao_informar">Não sei / Prefiro não informar</span>
+                            </label>
+                        </div>
                     </div>
                     <div class="button-group">
                         <button type="button" class="btn-secondary" onclick="previousScreen()" data-i18n="btn_back">Voltar</button>
@@ -666,30 +696,9 @@
                     <div class="progress-bar">
                         <div class="progress-fill" style="width: 25%;"></div>
                     </div>
-                    <h2 data-i18n="q5_title">Em qual segmento sua empresa atua?</h2>
+                    <h2 data-i18n="q5_title">Qual é o nome da sua empresa?</h2>
                     <div class="form-group">
-                        <div class="radio-group">
-                            <label class="radio-item">
-                                <input type="radio" name="segmento" value="saas" required>
-                                <span data-i18n="segmento_saas">SaaS / Tecnologia</span>
-                            </label>
-                            <label class="radio-item">
-                                <input type="radio" name="segmento" value="servicos" required>
-                                <span data-i18n="segmento_servicos">Serviços B2B</span>
-                            </label>
-                            <label class="radio-item">
-                                <input type="radio" name="segmento" value="industria" required>
-                                <span data-i18n="segmento_industria">Indústria</span>
-                            </label>
-                            <label class="radio-item">
-                                <input type="radio" name="segmento" value="educacao" required>
-                                <span data-i18n="segmento_educacao">Educação / Treinamentos</span>
-                            </label>
-                            <label class="radio-item">
-                                <input type="radio" name="segmento" value="outro" required>
-                                <span data-i18n="segmento_outro">Outro</span>
-                            </label>
-                        </div>
+                        <input type="text" id="empresa" name="empresa" placeholder="Digite o nome da empresa" required>
                     </div>
                     <div class="button-group">
                         <button type="button" class="btn-secondary" onclick="previousScreen()" data-i18n="btn_back">Voltar</button>
@@ -697,32 +706,37 @@
                     </div>
                 </div>
 
+                <!-- SEGMENTO ATUALIZADO -->
                 <div class="form-screen" id="screen6">
                     <div class="progress-bar">
                         <div class="progress-fill" style="width: 30%;"></div>
                     </div>
-                    <h2 data-i18n="q6_title">Quantas pessoas compõem seu time comercial?</h2>
+                    <h2 data-i18n="q6_title">Em qual segmento sua empresa atua?</h2>
                     <div class="form-group">
                         <div class="radio-group">
                             <label class="radio-item">
-                                <input type="radio" name="tamanho_time" value="1-3" required>
-                                <span>1–3</span>
+                                <input type="radio" name="segmento" value="tecnologia_saas" required>
+                                <span data-i18n="segmento_tecnologia_saas">Tecnologia / SaaS / Cloud</span>
                             </label>
                             <label class="radio-item">
-                                <input type="radio" name="tamanho_time" value="4-10" required>
-                                <span>4–10</span>
+                                <input type="radio" name="segmento" value="fintech_servicos_financeiros" required>
+                                <span data-i18n="segmento_fintech_servicos_financeiros">Fintech / Serviços financeiros / Jurídico</span>
                             </label>
                             <label class="radio-item">
-                                <input type="radio" name="tamanho_time" value="11-30" required>
-                                <span>11–30</span>
+                                <input type="radio" name="segmento" value="servicos_rh_coaching" required>
+                                <span data-i18n="segmento_servicos_rh_coaching">Serviços em RH e Coaching</span>
                             </label>
                             <label class="radio-item">
-                                <input type="radio" name="tamanho_time" value="31-50" required>
-                                <span>31–50</span>
+                                <input type="radio" name="segmento" value="industria_manufatura" required>
+                                <span data-i18n="segmento_industria_manufatura">Indústria / Manufatura</span>
                             </label>
                             <label class="radio-item">
-                                <input type="radio" name="tamanho_time" value="50+" required>
-                                <span>50+</span>
+                                <input type="radio" name="segmento" value="outros" required>
+                                <span data-i18n="segmento_outros">Outros</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="segmento" value="nao_informar">
+                                <span data-i18n="nao_informar">Não sei / Prefiro não informar</span>
                             </label>
                         </div>
                     </div>
@@ -732,15 +746,39 @@
                     </div>
                 </div>
 
-                <!-- Bloco 2: Diagnóstico de META -->
+                <!-- TAMANHO DO TIME ATUALIZADO -->
                 <div class="form-screen" id="screen7">
                     <div class="progress-bar">
-                        <div class="progress-fill" style="width: 40%;"></div>
+                        <div class="progress-fill" style="width: 35%;"></div>
                     </div>
-                    <h2 data-i18n="q7_title">Qual é a meta mensal de vendas da sua empresa?</h2>
+                    <h2 data-i18n="q7_title">Quantas pessoas compõem seu time comercial?</h2>
                     <div class="form-group">
-                        <label data-i18n="q7_hint">Digite o valor em reais (R$).</label>
-                        <input type="number" id="meta_mensal" name="meta_mensal" placeholder="Ex: 100000" required>
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="tamanho_time" value="1-5" required>
+                                <span>1–5</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="tamanho_time" value="6-20" required>
+                                <span>6–20</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="tamanho_time" value="21-50" required>
+                                <span>21–50</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="tamanho_time" value="51-100" required>
+                                <span>51–100</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="tamanho_time" value="101+" required>
+                                <span>101+</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="tamanho_time" value="nao_informar">
+                                <span data-i18n="nao_informar">Não sei / Prefiro não informar</span>
+                            </label>
+                        </div>
                     </div>
                     <div class="button-group">
                         <button type="button" class="btn-secondary" onclick="previousScreen()" data-i18n="btn_back">Voltar</button>
@@ -748,13 +786,15 @@
                     </div>
                 </div>
 
+                <!-- Bloco 2: Diagnóstico de META (Reindexado) -->
                 <div class="form-screen" id="screen8">
                     <div class="progress-bar">
-                        <div class="progress-fill" style="width: 45%;"></div>
+                        <div class="progress-fill" style="width: 40%;"></div>
                     </div>
-                    <h2 data-i18n="q8_title">Qual é o ticket médio das suas vendas?</h2>
+                    <h2 data-i18n="q8_title">Qual é a meta mensal de vendas da sua empresa?</h2>
                     <div class="form-group">
-                        <input type="number" id="ticket_medio" name="ticket_medio" placeholder="Ex: 5000" required>
+                        <label data-i18n="q8_hint">Digite o valor em reais (R$).</label>
+                        <input type="number" id="meta_mensal" name="meta_mensal" placeholder="Ex: 100000" required>
                     </div>
                     <div class="button-group">
                         <button type="button" class="btn-secondary" onclick="previousScreen()" data-i18n="btn_back">Voltar</button>
@@ -764,13 +804,11 @@
 
                 <div class="form-screen" id="screen9">
                     <div class="progress-bar">
-                        <div class="progress-fill" style="width: 50%;"></div>
+                        <div class="progress-fill" style="width: 45%;"></div>
                     </div>
-                    <h2 data-i18n="q9_title">Qual é a taxa média de conversão de leads em clientes?</h2>
+                    <h2 data-i18n="q9_title">Qual é o ticket médio das suas vendas?</h2>
                     <div class="form-group">
-                        <label data-i18n="q9_hint">Por exemplo: se de 100 leads você fecha 5 clientes, digite 5%.</label>
-                        <input type="number" id="conversao" name="conversao" placeholder="Ex: 5" min="0" max="100" required>
-                        <div class="hint" data-i18n="q9_hint2">Digite apenas o número (sem o símbolo %)</div>
+                        <input type="number" id="ticket_medio" name="ticket_medio" placeholder="Ex: 5000" required>
                     </div>
                     <div class="button-group">
                         <button type="button" class="btn-secondary" onclick="previousScreen()" data-i18n="btn_back">Voltar</button>
@@ -780,11 +818,13 @@
 
                 <div class="form-screen" id="screen10">
                     <div class="progress-bar">
-                        <div class="progress-fill" style="width: 55%;"></div>
+                        <div class="progress-fill" style="width: 50%;"></div>
                     </div>
-                    <h2 data-i18n="q10_title">Quantos vendedores estão ativos hoje?</h2>
+                    <h2 data-i18n="q10_title">Qual é a taxa média de conversão de leads em clientes?</h2>
                     <div class="form-group">
-                        <input type="number" id="vendedores_ativos" name="vendedores_ativos" placeholder="Ex: 5" required>
+                        <label data-i18n="q10_hint">Por exemplo: se de 100 leads você fecha 5 clientes, digite 5.</label>
+                        <input type="number" id="taxa_conversao" name="taxa_conversao" placeholder="Ex: 5" required>
+                        <p class="hint" data-i18n="q10_hint2">Digite apenas o número (sem o símbolo %)</p>
                     </div>
                     <div class="button-group">
                         <button type="button" class="btn-secondary" onclick="previousScreen()" data-i18n="btn_back">Voltar</button>
@@ -794,11 +834,11 @@
 
                 <div class="form-screen" id="screen11">
                     <div class="progress-bar">
-                        <div class="progress-fill" style="width: 60%;"></div>
+                        <div class="progress-fill" style="width: 55%;"></div>
                     </div>
-                    <h2 data-i18n="q11_title">Quantos estão em ramp-up (menos de 3 meses)?</h2>
+                    <h2 data-i18n="q11_title">Quantos vendedores estão ativos hoje?</h2>
                     <div class="form-group">
-                        <input type="number" id="vendedores_rampup" name="vendedores_rampup" placeholder="Ex: 1" required>
+                        <input type="number" id="vendedores_ativos" name="vendedores_ativos" placeholder="Ex: 10" required>
                     </div>
                     <div class="button-group">
                         <button type="button" class="btn-secondary" onclick="previousScreen()" data-i18n="btn_back">Voltar</button>
@@ -808,28 +848,11 @@
 
                 <div class="form-screen" id="screen12">
                     <div class="progress-bar">
-                        <div class="progress-fill" style="width: 65%;"></div>
+                        <div class="progress-fill" style="width: 60%;"></div>
                     </div>
-                    <h2 data-i18n="q12_title">Qual é o ciclo médio de vendas da sua operação?</h2>
+                    <h2 data-i18n="q12_title">Quantos estão em ramp-up (menos de 3 meses)?</h2>
                     <div class="form-group">
-                        <div class="radio-group">
-                            <label class="radio-item">
-                                <input type="radio" name="ciclo_vendas" value="menos_30" required>
-                                <span data-i18n="ciclo_menos30">Menos de 30 dias</span>
-                            </label>
-                            <label class="radio-item">
-                                <input type="radio" name="ciclo_vendas" value="30-60" required>
-                                <span>30–60 dias</span>
-                            </label>
-                            <label class="radio-item">
-                                <input type="radio" name="ciclo_vendas" value="60-90" required>
-                                <span>60–90 dias</span>
-                            </label>
-                            <label class="radio-item">
-                                <input type="radio" name="ciclo_vendas" value="mais_90" required>
-                                <span data-i18n="ciclo_mais90">Mais de 90 dias</span>
-                            </label>
-                        </div>
+                        <input type="number" id="vendedores_rampup" name="vendedores_rampup" placeholder="Ex: 2" required>
                     </div>
                     <div class="button-group">
                         <button type="button" class="btn-secondary" onclick="previousScreen()" data-i18n="btn_back">Voltar</button>
@@ -839,26 +862,30 @@
 
                 <div class="form-screen" id="screen13">
                     <div class="progress-bar">
-                        <div class="progress-fill" style="width: 70%;"></div>
+                        <div class="progress-fill" style="width: 65%;"></div>
                     </div>
-                    <h2 data-i18n="q13_title">Qual foi o atingimento médio de meta do time nos últimos 3 meses?</h2>
+                    <h2 data-i18n="q13_title">Qual é o ciclo médio de vendas da sua operação?</h2>
                     <div class="form-group">
                         <div class="radio-group">
                             <label class="radio-item">
-                                <input type="radio" name="atingimento" value="menos_60" required>
-                                <span data-i18n="atingimento_menos60">Menos de 60%</span>
+                                <input type="radio" name="ciclo_vendas" value="menos_30" required>
+                                <span data-i18n="ciclo_menos30">Menos de 30 dias</span>
                             </label>
                             <label class="radio-item">
-                                <input type="radio" name="atingimento" value="60-80" required>
-                                <span>60–80%</span>
+                                <input type="radio" name="ciclo_vendas" value="30_60" required>
+                                <span>30 a 60 dias</span>
                             </label>
                             <label class="radio-item">
-                                <input type="radio" name="atingimento" value="80-100" required>
-                                <span>80–100%</span>
+                                <input type="radio" name="ciclo_vendas" value="61_90" required>
+                                <span>61 a 90 dias</span>
                             </label>
                             <label class="radio-item">
-                                <input type="radio" name="atingimento" value="mais_100" required>
-                                <span data-i18n="atingimento_mais100">Mais de 100%</span>
+                                <input type="radio" name="ciclo_vendas" value="mais_90" required>
+                                <span data-i18n="ciclo_mais90">Mais de 90 dias</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="ciclo_vendas" value="nao_informar">
+                                <span data-i18n="nao_informar">Não sei / Prefiro não informar</span>
                             </label>
                         </div>
                     </div>
@@ -868,12 +895,47 @@
                     </div>
                 </div>
 
-                <!-- Bloco 3: Diagnóstico de COMISSÃO -->
                 <div class="form-screen" id="screen14">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 70%;"></div>
+                    </div>
+                    <h2 data-i18n="q14_title">Qual foi o atingimento médio de meta do time nos últimos 3 meses?</h2>
+                    <div class="form-group">
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="atingimento_equipe" value="menos_60" required>
+                                <span data-i18n="atingimento_menos60">Menos de 60%</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="atingimento_equipe" value="60_80" required>
+                                <span>60% a 80%</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="atingimento_equipe" value="81_100" required>
+                                <span>81% a 100%</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="atingimento_equipe" value="mais_100" required>
+                                <span data-i18n="atingimento_mais100">Mais de 100%</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="atingimento_equipe" value="nao_informar">
+                                <span data-i18n="nao_informar">Não sei / Prefiro não informar</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="button-group">
+                        <button type="button" class="btn-secondary" onclick="previousScreen()" data-i18n="btn_back">Voltar</button>
+                        <button type="button" class="btn-primary" onclick="nextScreen()" data-i18n="btn_next">Próximo</button>
+                    </div>
+                </div>
+
+                <!-- Bloco 3: Diagnóstico de COMISSÃO (Reindexado) -->
+                <div class="form-screen" id="screen15">
                     <div class="progress-bar">
                         <div class="progress-fill" style="width: 75%;"></div>
                     </div>
-                    <h2 data-i18n="q14_title">Qual é o salário fixo médio do vendedor?</h2>
+                    <h2 data-i18n="q15_title">Qual é o salário fixo médio do vendedor?</h2>
                     <div class="form-group">
                         <input type="number" id="salario_fixo" name="salario_fixo" placeholder="Ex: 3000" required>
                     </div>
@@ -883,28 +945,14 @@
                     </div>
                 </div>
 
-                <div class="form-screen" id="screen15">
+                <div class="form-screen" id="screen16">
                     <div class="progress-bar">
                         <div class="progress-fill" style="width: 80%;"></div>
                     </div>
-                    <h2 data-i18n="q15_title">Qual é o percentual médio de comissão sobre vendas?</h2>
+                    <h2 data-i18n="q16_title">Qual é o percentual médio de comissão sobre vendas?</h2>
                     <div class="form-group">
-                        <input type="number" id="comissao_percent" name="comissao_percent" placeholder="Ex: 8" min="0" max="100" required>
-                        <div class="hint" data-i18n="q15_hint">Digite apenas o número (sem o símbolo %)</div>
-                    </div>
-                    <div class="button-group">
-                        <button type="button" class="btn-secondary" onclick="previousScreen()" data-i18n="btn_back">Voltar</button>
-                        <button type="button" class="btn-primary" onclick="nextScreen()" data-i18n="btn_next">Próximo</button>
-                    </div>
-                </div>
-
-                <div class="form-screen" id="screen16">
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 85%;"></div>
-                    </div>
-                    <h2 data-i18n="q16_title">Qual é a meta individual mensal de cada vendedor?</h2>
-                    <div class="form-group">
-                        <input type="number" id="meta_individual" name="meta_individual" placeholder="Ex: 20000" required>
+                        <input type="number" id="percentual_comissao" name="percentual_comissao" placeholder="Ex: 5" required>
+                        <p class="hint" data-i18n="q16_hint">Digite apenas o número (sem o símbolo %)</p>
                     </div>
                     <div class="button-group">
                         <button type="button" class="btn-secondary" onclick="previousScreen()" data-i18n="btn_back">Voltar</button>
@@ -914,28 +962,11 @@
 
                 <div class="form-screen" id="screen17">
                     <div class="progress-bar">
-                        <div class="progress-fill" style="width: 90%;"></div>
+                        <div class="progress-fill" style="width: 85%;"></div>
                     </div>
-                    <h2 data-i18n="q17_title">Quantos vendedores atingem 100% da meta mensalmente?</h2>
+                    <h2 data-i18n="q17_title">Qual é a meta individual mensal de cada vendedor?</h2>
                     <div class="form-group">
-                        <div class="radio-group">
-                            <label class="radio-item">
-                                <input type="radio" name="atingimento_individual" value="menos_30" required>
-                                <span data-i18n="atingimento_ind_menos30">Menos de 30%</span>
-                            </label>
-                            <label class="radio-item">
-                                <input type="radio" name="atingimento_individual" value="30-50" required>
-                                <span>30–50%</span>
-                            </label>
-                            <label class="radio-item">
-                                <input type="radio" name="atingimento_individual" value="50-70" required>
-                                <span>50–70%</span>
-                            </label>
-                            <label class="radio-item">
-                                <input type="radio" name="atingimento_individual" value="mais_70" required>
-                                <span data-i18n="atingimento_ind_mais70">Mais de 70%</span>
-                            </label>
-                        </div>
+                        <input type="number" id="meta_individual" name="meta_individual" placeholder="Ex: 10000" required>
                     </div>
                     <div class="button-group">
                         <button type="button" class="btn-secondary" onclick="previousScreen()" data-i18n="btn_back">Voltar</button>
@@ -945,9 +976,44 @@
 
                 <div class="form-screen" id="screen18">
                     <div class="progress-bar">
-                        <div class="progress-fill" style="width: 100%;"></div>
+                        <div class="progress-fill" style="width: 90%;"></div>
                     </div>
-                    <h2 data-i18n="q18_title">O turnover (saída voluntária) do time de vendas é:</h2>
+                    <h2 data-i18n="q18_title">Quantos vendedores atingem 100% da meta mensalmente?</h2>
+                    <div class="form-group">
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="atingimento_individual" value="menos_30" required>
+                                <span data-i18n="atingimento_ind_menos30">Menos de 30%</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="atingimento_individual" value="30_50" required>
+                                <span>30% a 50%</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="atingimento_individual" value="51_70" required>
+                                <span>51% a 70%</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="atingimento_individual" value="mais_70" required>
+                                <span data-i18n="atingimento_ind_mais70">Mais de 70%</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="atingimento_individual" value="nao_informar">
+                                <span data-i18n="nao_informar">Não sei / Prefiro não informar</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="button-group">
+                        <button type="button" class="btn-secondary" onclick="previousScreen()" data-i18n="btn_back">Voltar</button>
+                        <button type="button" class="btn-primary" onclick="nextScreen()" data-i18n="btn_next">Próximo</button>
+                    </div>
+                </div>
+
+                <div class="form-screen" id="screen19">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 95%;"></div>
+                    </div>
+                    <h2 data-i18n="q19_title">O turnover (saída voluntária) do time de vendas é:</h2>
                     <div class="form-group">
                         <div class="radio-group">
                             <label class="radio-item">
@@ -966,6 +1032,30 @@
                                 <input type="radio" name="turnover" value="muito_alto" required>
                                 <span data-i18n="turnover_muito_alto">Muito alto (mais de 40%)</span>
                             </label>
+                            <label class="radio-item">
+                                <input type="radio" name="turnover" value="nao_informar">
+                                <span data-i18n="nao_informar">Não sei / Prefiro não informar</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="button-group">
+                        <button type="button" class="btn-secondary" onclick="previousScreen()" data-i18n="btn_back">Voltar</button>
+                        <button type="button" class="btn-primary" onclick="nextScreen()" data-i18n="btn_next">Próximo</button>
+                    </div>
+                </div>
+
+                <!-- Opt-in (Reindexado) -->
+                <div class="form-screen" id="screen20">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%;"></div>
+                    </div>
+                    <h2 data-i18n="q20_title">Quase lá! Aceita receber comunicações da Salespring?</h2>
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="opt_in_comunicacao" name="opt_in_comunicacao" value="sim" required>
+                                <span data-i18n="opt_in_text">Aceito receber comunicações da Salespring. Respeitamos sua privacidade e usaremos suas informações apenas para compartilhar conteúdos, produtos e serviços relevantes. Você pode cancelar a qualquer momento. Saiba mais em nossa Política de Privacidade.</span>
+                            </label>
                         </div>
                     </div>
                     <div class="button-group">
@@ -973,13 +1063,14 @@
                         <button type="button" class="btn-primary" onclick="nextScreen()" data-i18n="btn_submit">Enviar Diagnóstico</button>
                     </div>
                 </div>
+
             </form>
 
             <!-- Results Screen -->
             <div class="results-screen" id="resultsScreen">
                 <h2 data-i18n="results_title">Seu diagnóstico está pronto!</h2>
-                <p style="text-align: center; color: #666; margin-bottom: 1.5rem;" data-i18n="results_subtitle">Aqui está o panorama da sua operação de vendas:</p>
-                
+                <p id="personalizedGreeting" data-i18n="results_subtitle">Olá [Nome] da [Empresa], aqui está o panorama da sua operação de vendas:</p>
+
                 <table class="results-table">
                     <thead>
                         <tr>
@@ -991,8 +1082,8 @@
                     <tbody>
                         <tr>
                             <td><strong data-i18n="results_metas">Metas</strong></td>
-                            <td><span class="status-badge" id="resultMeta"></span></td>
-                            <td id="insightMeta"></td>
+                            <td><span class="status-badge" id="resultMetas"></span></td>
+                            <td id="insightMetas"></td>
                         </tr>
                         <tr>
                             <td><strong data-i18n="results_comissao">Comissão</strong></td>
@@ -1014,10 +1105,25 @@
 
                 <p style="text-align: center; color: #666; margin: 1.5rem 0;" data-i18n="results_note">Estruturas equilibradas de metas e comissões aumentam em até 25% o atingimento de metas e reduzem turnover.</p>
 
+                <!-- NOVO CTA - MAIS AMIGÁVEL -->
                 <div class="cta-section">
-                    <h3 data-i18n="cta_title">Quer otimizar suas metas e comissões?</h3>
-                    <p data-i18n="cta_description">Agende uma conversa com o time da Salespring e veja como automatizar tudo isso com dados em tempo real.</p>
-                    <button class="btn-cta" onclick="scheduleDemo()" data-i18n="cta_button">Quero otimizar minhas metas e comissões</button>
+                    <h3 data-i18n="cta_title_friendly">Quer conversar sobre como deixar sua operação ainda mais previsível e lucrativa?</h3>
+                    <p data-i18n="cta_description_friendly">Agende uma conversa gratuita e sem compromisso com um de nossos especialistas. É só dizer "Sim" abaixo!</p>
+                    
+                    <div class="form-group" style="margin-top: 1.5rem;">
+                        <label style="color: white; font-size: 1.1rem;" data-i18n="cta_question">Gostaria de receber um contato gratuito para conversar mais sobre o assunto?</label>
+                        <div class="radio-group" style="flex-direction: row; justify-content: center; gap: 2rem; margin-top: 1rem;">
+                            <label class="radio-item" style="background: white; border: none; flex: 0 1 auto;">
+                                <input type="radio" name="opt_in_contato" value="sim" required>
+                                <span style="color: #1a0f3d; font-weight: 600;" data-i18n="cta_option_yes">Sim, quero!</span>
+                            </label>
+                            <label class="radio-item" style="background: white; border: none; flex: 0 1 auto;">
+                                <input type="radio" name="opt_in_contato" value="nao" required>
+                                <span style="color: #1a0f3d; font-weight: 600;" data-i18n="cta_option_no">Não, obrigado(a).</span>
+                            </label>
+                        </div>
+                    </div>
+                    <button class="btn-cta" onclick="submitFinalForm()" data-i18n="cta_button_final" style="margin-top: 1.5rem;">Finalizar e Enviar Resposta</button>
                 </div>
 
                 <div class="button-group" style="margin-top: 2rem;">
@@ -1033,6 +1139,9 @@
     </footer>
 
     <script>
+        // Variável para a URL do Google Apps Script (Substitua pelo seu URL de implantação)
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyTsM0r3-jt89cbHzLCiAfxbhh_MBvOXip9yPXLrIWVSGnf_ba6vdMhqT3uwG2JtfoN/exec'; 
+
         // Translations
         const translations = {
             'pt-BR': {
@@ -1049,48 +1158,75 @@
                 'btn_restart': 'Fazer novo diagnóstico',
                 'q1_title': 'Qual é o seu nome completo?',
                 'q2_title': 'Qual é o seu email?',
-                'q3_title': 'Qual é o seu cargo atual?',
-                'q4_title': 'Qual é o nome da sua empresa?',
-                'q5_title': 'Em qual segmento sua empresa atua?',
-                'q6_title': 'Quantas pessoas compõem seu time comercial?',
-                'q7_title': 'Qual é a meta mensal de vendas da sua empresa?',
-                'q7_hint': 'Digite o valor em reais (R$).',
-                'q8_title': 'Qual é o ticket médio das suas vendas?',
-                'q9_title': 'Qual é a taxa média de conversão de leads em clientes?',
-                'q9_hint': 'Por exemplo: se de 100 leads você fecha 5 clientes, digite 5%.',
-                'q9_hint2': 'Digite apenas o número (sem o símbolo %)',
-                'q10_title': 'Quantos vendedores estão ativos hoje?',
-                'q11_title': 'Quantos estão em ramp-up (menos de 3 meses)?',
-                'q12_title': 'Qual é o ciclo médio de vendas da sua operação?',
-                'q13_title': 'Qual foi o atingimento médio de meta do time nos últimos 3 meses?',
-                'q14_title': 'Qual é o salário fixo médio do vendedor?',
-                'q15_title': 'Qual é o percentual médio de comissão sobre vendas?',
-                'q15_hint': 'Digite apenas o número (sem o símbolo %)',
-                'q16_title': 'Qual é a meta individual mensal de cada vendedor?',
-                'q17_title': 'Quantos vendedores atingem 100% da meta mensalmente?',
-                'q18_title': 'O turnover (saída voluntária) do time de vendas é:',
-                'cargo_founder': 'Founder / CEO',
-                'cargo_head': 'Head de Vendas / Gestor Comercial',
-                'cargo_cmo': 'CMO / Marketing',
-                'cargo_cs': 'CS / Customer Success',
-                'cargo_outro': 'Outro',
-                'segmento_saas': 'SaaS / Tecnologia',
-                'segmento_servicos': 'Serviços B2B',
-                'segmento_industria': 'Indústria',
-                'segmento_educacao': 'Educação / Treinamentos',
-                'segmento_outro': 'Outro',
+                'q2_hint': 'Preferencialmente corporativo para garantir a entrega do seu diagnóstico.',
+                'q3_title': 'Qual é o seu telefone?',
+                'q3_hint': 'Seu número de contato para o caso de você solicitar uma conversa gratuita.',
+                'q4_title': 'Qual é a sua área de atuação?',
+                'q5_title': 'Qual é o nome da sua empresa?',
+                'q6_title': 'Em qual segmento sua empresa atua?',
+                'q7_title': 'Quantas pessoas compõem seu time comercial?',
+                'q8_title': 'Qual é a meta mensal de vendas da sua empresa?',
+                'q8_hint': 'Digite o valor em reais (R$).',
+                'q9_title': 'Qual é o ticket médio das suas vendas?',
+                'q10_title': 'Qual é a taxa média de conversão de leads em clientes?',
+                'q10_hint': 'Por exemplo: se de 100 leads você fecha 5 clientes, digite 5.',
+                'q10_hint2': 'Digite apenas o número (sem o símbolo %)',
+                'q11_title': 'Quantos vendedores estão ativos hoje?',
+                'q12_title': 'Quantos estão em ramp-up (menos de 3 meses)?',
+                'q13_title': 'Qual é o ciclo médio de vendas da sua operação?',
+                'q14_title': 'Qual foi o atingimento médio de meta do time nos últimos 3 meses?',
+                'q15_title': 'Qual é o salário fixo médio do vendedor?',
+                'q16_title': 'Qual é o percentual médio de comissão sobre vendas?',
+                'q16_hint': 'Digite apenas o número (sem o símbolo %)',
+                'q17_title': 'Qual é a meta individual mensal de cada vendedor?',
+                'q18_title': 'Quantos vendedores atingem 100% da meta mensalmente?',
+                'q19_title': 'O turnover (saída voluntária) do time de vendas é:',
+                'q20_title': 'Quase lá! Aceita receber comunicações da Salespring?',
+                'opt_in_text': 'Aceito receber comunicações da Salespring. Respeitamos sua privacidade e usaremos suas informações apenas para compartilhar conteúdos, produtos e serviços relevantes. Você pode cancelar a qualquer momento. Saiba mais em nossa Política de Privacidade.',
+                
+                // Cargos
+                'cargo_lideranca_executiva': 'Liderança Executiva (CEO/CRO/CFO/Founder)',
+                'cargo_diretoria_comercial': 'Diretoria Comercial/Vendas/RevOps',
+                'cargo_diretoria_marketing': 'Diretoria de Marketing',
+                'cargo_diretoria_cs': 'Diretoria de Customer Success (CS)',
+                'cargo_gerencia_comercial': 'Gerência Comercial/Vendas',
+                'cargo_gerencia_marketing': 'Gerência de Marketing',
+                'cargo_gerencia_cs': 'Gerência de Customer Success (CS)',
+                'cargo_executivo_vendas': 'Executivo de Vendas / BDR / Vendedor / SDR',
+                'cargo_analista_marketing_cs': 'Analista de Marketing / CS',
+                'cargo_assistente_estagiario': 'Assistente / Estagiário / Estudante',
+
+                // Segmentos
+                'segmento_tecnologia_saas': 'Tecnologia / SaaS / Cloud',
+                'segmento_fintech_servicos_financeiros': 'Fintech / Serviços financeiros / Jurídico',
+                'segmento_servicos_rh_coaching': 'Serviços em RH e Coaching',
+                'segmento_industria_manufatura': 'Indústria / Manufatura',
+                'segmento_outros': 'Outros',
+
+                // Opção "Não sei"
+                'nao_informar': 'Não sei / Prefiro não informar',
+
+                // Ciclo de Vendas
                 'ciclo_menos30': 'Menos de 30 dias',
                 'ciclo_mais90': 'Mais de 90 dias',
+                
+                // Atingimento Equipe
                 'atingimento_menos60': 'Menos de 60%',
                 'atingimento_mais100': 'Mais de 100%',
+                
+                // Atingimento Individual
                 'atingimento_ind_menos30': 'Menos de 30%',
                 'atingimento_ind_mais70': 'Mais de 70%',
+                
+                // Turnover
                 'turnover_baixo': 'Baixo (menos de 10% ao ano)',
                 'turnover_moderado': 'Moderado (10–25%)',
                 'turnover_alto': 'Alto (25–40%)',
                 'turnover_muito_alto': 'Muito alto (mais de 40%)',
+                
+                // Resultados
                 'results_title': 'Seu diagnóstico está pronto!',
-                'results_subtitle': 'Aqui está o panorama da sua operação de vendas:',
+                'results_subtitle': 'Olá [Nome] da [Empresa], aqui está o panorama da sua operação de vendas:',
                 'results_axis': 'Eixo',
                 'results_status': 'Status',
                 'results_insight': 'Insight',
@@ -1099,14 +1235,16 @@
                 'results_turnover': 'Turnover',
                 'results_recommendation': 'Recomendação Personalizada',
                 'results_note': 'Estruturas equilibradas de metas e comissões aumentam em até 25% o atingimento de metas e reduzem turnover.',
-                'cta_title': 'Quer otimizar suas metas e comissões?',
-                'cta_description': 'Agende uma conversa com o time da Salespring e veja como automatizar tudo isso com dados em tempo real.',
-                'cta_button': 'Quero otimizar minhas metas e comissões',
-                'footer_text': 'Gestão de metas, comissões e performance em um único lugar.',
-                'footer_copyright': '© 2025 Salespring. Todos os direitos reservados.',
-                'nav_inicio': 'Início',
-                'nav_sobre': 'Sobre',
-                'nav_contato': 'Contato',
+                
+                // CTA Final Amigável
+                'cta_title_friendly': 'Quer conversar sobre como deixar sua operação ainda mais previsível e lucrativa?',
+                'cta_description_friendly': 'Agende uma conversa gratuita e sem compromisso com um de nossos especialistas. É só dizer "Sim" abaixo!',
+                'cta_question': 'Gostaria de receber um contato gratuito para conversar mais sobre o assunto?',
+                'cta_option_yes': 'Sim, quero!',
+                'cta_option_no': 'Não, obrigado(a).',
+                'cta_button_final': 'Finalizar e Enviar Resposta',
+
+                // Insights (mantidos do original)
                 'meta_high_risk': 'Risco Alto',
                 'meta_adjustment': 'Ajuste Necessário',
                 'meta_balanced': 'Equilibrada',
@@ -1127,8 +1265,16 @@
                 'turnover_healthy_insight': 'Seu time está estável. Continue mantendo o alinhamento entre metas e comissões.',
                 'recommendation_high_risk': 'Sua estrutura de metas e comissões pode estar desmotivando o time e reduzindo resultados. Recomendamos uma revisão estratégica completa para realinhar capacidade, metas e remuneração. Com a Salespring, você pode automatizar esses cálculos e acompanhar em tempo real.',
                 'recommendation_medium_risk': 'Seu plano tem potencial, mas ajustes finos podem gerar mais previsibilidade e engajamento. Estruturas equilibradas de metas e comissões aumentam em até 25% o atingimento de metas e reduzem turnover. A Salespring pode ajudá-lo a automatizar e acompanhar esses indicadores.',
-                'recommendation_healthy': 'Sua operação está bem estruturada! Metas e comissões equilibradas com o mercado são fundamentais para manter o time motivado e previsível. Com a Salespring, você pode automatizar esses cálculos e ganhar ainda mais visibilidade da performance.'
+                'recommendation_healthy': 'Sua operação está bem estruturada! Metas e comissões equilibradas com o mercado são fundamentais para manter o time motivado e previsível. Com a Salespring, você pode automatizar esses cálculos e ganhar ainda mais visibilidade da performance.',
+
+                // Navegação e Rodapé
+                'footer_text': 'Gestão de metas, comissões e performance em um único lugar.',
+                'footer_copyright': '© 2025 Salespring. Todos os direitos reservados.',
+                'nav_inicio': 'Início',
+                'nav_sobre': 'Sobre',
+                'nav_contato': 'Contato',
             },
+            // Adicionar as traduções para pt-PT, en e es
             'pt-PT': {
                 'welcome_title': 'Bem-vindo ao Diagnóstico de Metas e Comissões',
                 'welcome_subtitle': 'Em poucos minutos, vai descobrir:',
@@ -1143,142 +1289,205 @@
                 'btn_restart': 'Fazer novo diagnóstico',
                 'q1_title': 'Qual é o seu nome completo?',
                 'q2_title': 'Qual é o seu email?',
-                'q3_title': 'Qual é o seu cargo atual?',
-                'q4_title': 'Qual é o nome da sua empresa?',
-                'q5_title': 'Em que segmento atua a sua empresa?',
-                'q6_title': 'Quantas pessoas compõem a sua equipa comercial?',
-                'q7_title': 'Qual é a meta mensal de vendas da sua empresa?',
-                'q7_hint': 'Digite o valor em euros (EUR).',
-                'q8_title': 'Qual é o ticket médio das suas vendas?',
-                'q9_title': 'Qual é a taxa média de conversão de leads em clientes?',
-                'q9_hint': 'Por exemplo: se de 100 leads fecha 5 clientes, digite 5%.',
-                'q9_hint2': 'Digite apenas o número (sem o símbolo %)',
-                'q10_title': 'Quantos vendedores estão ativos hoje?',
-                'q11_title': 'Quantos estão em ramp-up (menos de 3 meses)?',
-                'q12_title': 'Qual é o ciclo médio de vendas da sua operação?',
-                'q13_title': 'Qual foi o atingimento médio de meta da equipa nos últimos 3 meses?',
-                'q14_title': 'Qual é o salário fixo médio do vendedor?',
-                'q15_title': 'Qual é o percentual médio de comissão sobre vendas?',
-                'q15_hint': 'Digite apenas o número (sem o símbolo %)',
-                'q16_title': 'Qual é a meta individual mensal de cada vendedor?',
-                'q17_title': 'Quantos vendedores atingem 100% da meta mensalmente?',
-                'q18_title': 'O turnover (saída voluntária) da equipa de vendas é:',
-                'cargo_founder': 'Founder / CEO',
-                'cargo_head': 'Head de Vendas / Gestor Comercial',
-                'cargo_cmo': 'CMO / Marketing',
-                'cargo_cs': 'CS / Customer Success',
-                'cargo_outro': 'Outro',
-                'segmento_saas': 'SaaS / Tecnologia',
-                'segmento_servicos': 'Serviços B2B',
-                'segmento_industria': 'Indústria',
-                'segmento_educacao': 'Educação / Treinamentos',
-                'segmento_outro': 'Outro',
+                'q2_hint': 'Preferencialmente corporativo para garantir a entrega do seu diagnóstico.',
+                'q3_title': 'Qual é o seu telefone?',
+                'q3_hint': 'O seu número de contacto para o caso de solicitar uma conversa gratuita.',
+                'q4_title': 'Qual é a sua área de atuação?',
+                'q5_title': 'Qual é o nome da sua empresa?',
+                'q6_title': 'Em que segmento atua a sua empresa?',
+                'q7_title': 'Quantas pessoas compõem a sua equipa comercial?',
+                'q8_title': 'Qual é a meta mensal de vendas da sua empresa?',
+                'q8_hint': 'Insira o valor em euros (€).',
+                'q9_title': 'Qual é o ticket médio das suas vendas?',
+                'q10_title': 'Qual é a taxa média de conversão de leads em clientes?',
+                'q10_hint': 'Por exemplo: se de 100 leads fecha 5 clientes, insira 5.',
+                'q10_hint2': 'Insira apenas o número (sem o símbolo %)',
+                'q11_title': 'Quantos vendedores estão ativos hoje?',
+                'q12_title': 'Quantos estão em ramp-up (menos de 3 meses)?',
+                'q13_title': 'Qual é o ciclo médio de vendas da sua operação?',
+                'q14_title': 'Qual foi o atingimento médio de meta da equipa nos últimos 3 meses?',
+                'q15_title': 'Qual é o salário fixo médio do vendedor?',
+                'q16_title': 'Qual é o percentual médio de comissão sobre vendas?',
+                'q16_hint': 'Insira apenas o número (sem o símbolo %)',
+                'q17_title': 'Qual é a meta individual mensal de cada vendedor?',
+                'q18_title': 'Quantos vendedores atingem 100% da meta mensalmente?',
+                'q19_title': 'A rotatividade (saída voluntária) da equipa de vendas é:',
+                'q20_title': 'Quase a terminar! Aceita receber comunicações da Salespring?',
+                'opt_in_text': 'Aceito receber comunicações da Salespring. Respeitamos a sua privacidade e usaremos as suas informações apenas para partilhar conteúdos, produtos e serviços relevantes. Pode cancelar a qualquer momento. Saiba mais na nossa Política de Privacidade.',
+                
+                // Cargos
+                'cargo_lideranca_executiva': 'Liderança Executiva (CEO/CRO/CFO/Founder)',
+                'cargo_diretoria_comercial': 'Diretoria Comercial/Vendas/RevOps',
+                'cargo_diretoria_marketing': 'Diretoria de Marketing',
+                'cargo_diretoria_cs': 'Diretoria de Customer Success (CS)',
+                'cargo_gerencia_comercial': 'Gerência Comercial/Vendas',
+                'cargo_gerencia_marketing': 'Gerência de Marketing',
+                'cargo_gerencia_cs': 'Gerência de Customer Success (CS)',
+                'cargo_executivo_vendas': 'Executivo de Vendas / BDR / Vendedor / SDR',
+                'cargo_analista_marketing_cs': 'Analista de Marketing / CS',
+                'cargo_assistente_estagiario': 'Assistente / Estagiário / Estudante',
+
+                // Segmentos
+                'segmento_tecnologia_saas': 'Tecnologia / SaaS / Cloud',
+                'segmento_fintech_servicos_financeiros': 'Fintech / Serviços financeiros / Jurídico',
+                'segmento_servicos_rh_coaching': 'Serviços em RH e Coaching',
+                'segmento_industria_manufatura': 'Indústria / Manufatura',
+                'segmento_outros': 'Outros',
+
+                // Opção "Não sei"
+                'nao_informar': 'Não sei / Prefiro não informar',
+
+                // Ciclo de Vendas
                 'ciclo_menos30': 'Menos de 30 dias',
                 'ciclo_mais90': 'Mais de 90 dias',
+                
+                // Atingimento Equipe
                 'atingimento_menos60': 'Menos de 60%',
                 'atingimento_mais100': 'Mais de 100%',
+                
+                // Atingimento Individual
                 'atingimento_ind_menos30': 'Menos de 30%',
                 'atingimento_ind_mais70': 'Mais de 70%',
+                
+                // Turnover
                 'turnover_baixo': 'Baixo (menos de 10% ao ano)',
                 'turnover_moderado': 'Moderado (10–25%)',
                 'turnover_alto': 'Alto (25–40%)',
                 'turnover_muito_alto': 'Muito alto (mais de 40%)',
+                
+                // Resultados
                 'results_title': 'O seu diagnóstico está pronto!',
-                'results_subtitle': 'Aqui está o panorama da sua operação de vendas:',
+                'results_subtitle': 'Olá [Nome] da [Empresa], aqui está o panorama da sua operação de vendas:',
                 'results_axis': 'Eixo',
                 'results_status': 'Estado',
                 'results_insight': 'Insight',
                 'results_metas': 'Metas',
                 'results_comissao': 'Comissão',
-                'results_turnover': 'Turnover',
+                'results_turnover': 'Rotatividade',
                 'results_recommendation': 'Recomendação Personalizada',
-                'results_note': 'Estruturas equilibradas de metas e comissões aumentam até 25% o atingimento de metas e reduzem turnover.',
-                'cta_title': 'Quer otimizar as suas metas e comissões?',
-                'cta_description': 'Agende uma conversa com a equipa da Salespring e veja como automatizar tudo isto com dados em tempo real.',
-                'cta_button': 'Quero otimizar as minhas metas e comissões',
+                'results_note': 'Estruturas equilibradas de metas e comissões aumentam em até 25% o atingimento de metas e reduzem a rotatividade.',
+                
+                // CTA Final Amigável
+                'cta_title_friendly': 'Quer conversar sobre como tornar a sua operação ainda mais previsível e lucrativa?',
+                'cta_description_friendly': 'Agende uma conversa gratuita e sem compromisso com um dos nossos especialistas. Basta dizer "Sim" abaixo!',
+                'cta_question': 'Gostaria de receber um contacto gratuito para conversar mais sobre o assunto?',
+                'cta_option_yes': 'Sim, quero!',
+                'cta_option_no': 'Não, obrigado(a).',
+                'cta_button_final': 'Finalizar e Enviar Resposta',
+
+                // Insights (mantidos do original)
+                'meta_high_risk': 'Risco Alto',
+                'meta_adjustment': 'Ajuste Necessário',
+                'meta_balanced': 'Equilibrada',
+                'meta_high_risk_insight': 'As suas metas estão acima da capacidade da equipa — isso pode gerar frustração e imprevisibilidade.',
+                'meta_adjustment_insight': 'As metas estão próximas do ponto ideal. Com ajustes finos no funil, a equipa pode aumentar a previsibilidade.',
+                'meta_balanced_insight': 'As suas metas estão equilibradas com a capacidade da equipa. Continue a acompanhar o ramp-up e a conversão.',
+                'comissao_low': 'Pouco Competitiva',
+                'comissao_adjustment': 'Ajustável',
+                'comissao_competitive': 'Competitiva',
+                'comissao_low_insight': 'Comissões abaixo da média do mercado reduzem a motivação e aumentam o risco de rotatividade.',
+                'comissao_adjustment_insight': 'O seu plano está próximo do ideal, mas pode precisar de calibração entre metas e variáveis.',
+                'comissao_competitive_insight': 'A sua estrutura de comissão está dentro da faixa ideal do mercado SaaS B2B.',
+                'turnover_critical': 'Crítico',
+                'turnover_attention': 'Atenção',
+                'turnover_healthy': 'Saudável',
+                'turnover_critical_insight': 'Alta rotatividade indica desalinhamento entre expectativa, metas e motivação financeira.',
+                'turnover_attention_insight': 'Rotatividade moderada sugere a necessidade de revisão na estrutura de remuneração.',
+                'turnover_healthy_insight': 'A sua equipa está estável. Continue a manter o alinhamento entre metas e comissões.',
+                'recommendation_high_risk': 'A sua estrutura de metas e comissões pode estar a desmotivar a equipa e a reduzir resultados. Recomendamos uma revisão estratégica completa para realinhar capacidade, metas e remuneração. Com a Salespring, pode automatizar estes cálculos e acompanhar em tempo real.',
+                'recommendation_medium_risk': 'O seu plano tem potencial, mas ajustes finos podem gerar mais previsibilidade e envolvimento. Estruturas equilibradas de metas e comissões aumentam em até 25% o atingimento de metas e reduzem a rotatividade. A Salespring pode ajudá-lo a automatizar e acompanhar estes indicadores.',
+                'recommendation_healthy': 'A sua operação está bem estruturada! Metas e comissões equilibradas com o mercado são fundamentais para manter a equipa motivada e previsível. Com a Salespring, pode automatizar estes cálculos e ganhar ainda mais visibilidade do desempenho.',
+
+                // Navegação e Rodapé
                 'footer_text': 'Gestão de metas, comissões e desempenho num único lugar.',
                 'footer_copyright': '© 2025 Salespring. Todos os direitos reservados.',
                 'nav_inicio': 'Início',
                 'nav_sobre': 'Sobre',
                 'nav_contato': 'Contacto',
-                'meta_high_risk': 'Risco Alto',
-                'meta_adjustment': 'Ajuste Necessário',
-                'meta_balanced': 'Equilibrada',
-                'meta_high_risk_insight': 'As suas metas estão acima da capacidade da equipa — isto pode gerar frustração e imprevisibilidade.',
-                'meta_adjustment_insight': 'As metas estão próximas do ponto ideal. Com ajustes finos no funil, a equipa pode aumentar previsibilidade.',
-                'meta_balanced_insight': 'As suas metas estão equilibradas com a capacidade da equipa. Continue a acompanhar ramp-up e conversão.',
-                'comissao_low': 'Pouco Competitiva',
-                'comissao_adjustment': 'Ajustável',
-                'comissao_competitive': 'Competitiva',
-                'comissao_low_insight': 'Comissões abaixo da média do mercado reduzem motivação e aumentam o risco de turnover.',
-                'comissao_adjustment_insight': 'O seu plano está próximo do ideal, mas pode precisar de calibragem entre metas e variáveis.',
-                'comissao_competitive_insight': 'A sua estrutura de comissão está dentro da faixa ideal do mercado SaaS B2B.',
-                'turnover_critical': 'Crítico',
-                'turnover_attention': 'Atenção',
-                'turnover_healthy': 'Saudável',
-                'turnover_critical_insight': 'Alto turnover indica desalinhamento entre expectativa, metas e motivação financeira.',
-                'turnover_attention_insight': 'Turnover moderado sugere necessidade de revisão na estrutura de remuneração.',
-                'turnover_healthy_insight': 'A sua equipa está estável. Continue a manter o alinhamento entre metas e comissões.',
-                'recommendation_high_risk': 'A sua estrutura de metas e comissões pode estar a desmotivar a equipa e a reduzir resultados. Recomendamos uma revisão estratégica completa para realinhar capacidade, metas e remuneração. Com a Salespring, pode automatizar esses cálculos e acompanhar em tempo real.',
-                'recommendation_medium_risk': 'O seu plano tem potencial, mas ajustes finos podem gerar mais previsibilidade e engajamento. Estruturas equilibradas de metas e comissões aumentam até 25% o atingimento de metas e reduzem turnover. A Salespring pode ajudá-lo a automatizar e acompanhar esses indicadores.',
-                'recommendation_healthy': 'A sua operação está bem estruturada! Metas e comissões equilibradas com o mercado são fundamentais para manter a equipa motivada e previsível. Com a Salespring, pode automatizar esses cálculos e ganhar ainda mais visibilidade do desempenho.'
             },
             'en': {
                 'welcome_title': 'Welcome to the Goals and Commissions Diagnostic',
-                'welcome_subtitle': 'In just a few minutes, you\'ll discover:',
-                'welcome_check1': 'Whether your goals are realistic or too aggressive',
-                'welcome_check2': 'Whether your commission plan is competitive',
+                'welcome_subtitle': 'In a few minutes, you will discover:',
+                'welcome_check1': 'If your goals are realistic or too aggressive',
+                'welcome_check2': 'If the commission plan is competitive',
                 'welcome_check3': 'And how much this impacts your team\'s performance',
-                'welcome_ready': 'Ready to get started?',
+                'welcome_ready': 'Ready to start?',
                 'btn_start': 'Start Diagnostic',
                 'btn_back': 'Back',
                 'btn_next': 'Next',
                 'btn_submit': 'Submit Diagnostic',
-                'btn_restart': 'Start a new diagnostic',
+                'btn_restart': 'Do a new diagnostic',
                 'q1_title': 'What is your full name?',
                 'q2_title': 'What is your email?',
-                'q3_title': 'What is your current position?',
-                'q4_title': 'What is your company name?',
-                'q5_title': 'What industry does your company operate in?',
-                'q6_title': 'How many people are on your sales team?',
-                'q7_title': 'What is your monthly sales target?',
-                'q7_hint': 'Enter the value in US dollars (USD).',
-                'q8_title': 'What is your average deal size?',
-                'q9_title': 'What is your average lead-to-customer conversion rate?',
-                'q9_hint': 'For example: if you close 5 customers out of 100 leads, enter 5%.',
-                'q9_hint2': 'Enter only the number (without the % symbol)',
-                'q10_title': 'How many salespeople are active today?',
-                'q11_title': 'How many are in ramp-up (less than 3 months)?',
-                'q12_title': 'What is your average sales cycle?',
-                'q13_title': 'What was your team\'s average goal attainment over the last 3 months?',
-                'q14_title': 'What is the average fixed salary of a salesperson?',
-                'q15_title': 'What is the average commission percentage on sales?',
-                'q15_hint': 'Enter only the number (without the % symbol)',
-                'q16_title': 'What is each salesperson\'s individual monthly target?',
-                'q17_title': 'How many salespeople achieve 100% of their target monthly?',
-                'q18_title': 'What is the turnover (voluntary departure) of your sales team:',
-                'cargo_founder': 'Founder / CEO',
-                'cargo_head': 'Head of Sales / Commercial Manager',
-                'cargo_cmo': 'CMO / Marketing',
-                'cargo_cs': 'CS / Customer Success',
-                'cargo_outro': 'Other',
-                'segmento_saas': 'SaaS / Technology',
-                'segmento_servicos': 'B2B Services',
-                'segmento_industria': 'Industry',
-                'segmento_educacao': 'Education / Training',
-                'segmento_outro': 'Other',
+                'q2_hint': 'Preferably corporate to ensure the delivery of your diagnostic.',
+                'q3_title': 'What is your phone number?',
+                'q3_hint': 'Your contact number in case you request a free consultation.',
+                'q4_title': 'What is your area of expertise?',
+                'q5_title': 'What is your company\'s name?',
+                'q6_title': 'In which segment does your company operate?',
+                'q7_title': 'How many people are on your sales team?',
+                'q8_title': 'What is your company\'s monthly sales goal?',
+                'q8_hint': 'Enter the value in US dollars (USD).',
+                'q9_title': 'What is your average sales ticket?',
+                'q10_title': 'What is the average conversion rate from leads to customers?',
+                'q10_hint': 'For example: if out of 100 leads you close 5 customers, enter 5.',
+                'q10_hint2': 'Enter only the number (without the % symbol)',
+                'q11_title': 'How many salespeople are active today?',
+                'q12_title': 'How many are in ramp-up (less than 3 months)?',
+                'q13_title': 'What is the average sales cycle of your operation?',
+                'q14_title': 'What was the team\'s average goal attainment in the last 3 months?',
+                'q15_title': 'What is the average fixed salary of the salesperson?',
+                'q16_title': 'What is the average commission percentage on sales?',
+                'q16_hint': 'Enter only the number (without the % symbol)',
+                'q17_title': 'What is the monthly individual goal for each salesperson?',
+                'q18_title': 'How many salespeople achieve 100% of the goal monthly?',
+                'q19_title': 'The turnover (voluntary departure) of the sales team is:',
+                'q20_title': 'Almost there! Do you agree to receive communications from Salespring?',
+                'opt_in_text': 'I agree to receive communications from Salespring. We respect your privacy and will only use your information to share relevant content, products, and services. You can unsubscribe at any time. Learn more in our Privacy Policy.',
+                
+                // Cargos
+                'cargo_lideranca_executiva': 'Executive Leadership (CEO/CRO/CFO/Founder)',
+                'cargo_diretoria_comercial': 'Commercial/Sales/RevOps Director',
+                'cargo_diretoria_marketing': 'Marketing Director',
+                'cargo_diretoria_cs': 'Customer Success (CS) Director',
+                'cargo_gerencia_comercial': 'Commercial/Sales Manager',
+                'cargo_gerencia_marketing': 'Marketing Manager',
+                'cargo_gerencia_cs': 'Customer Success (CS) Manager',
+                'cargo_executivo_vendas': 'Sales Executive / BDR / Salesperson / SDR',
+                'cargo_analista_marketing_cs': 'Marketing / CS Analyst',
+                'cargo_assistente_estagiario': 'Assistant / Intern / Student',
+
+                // Segmentos
+                'segmento_tecnologia_saas': 'Technology / SaaS / Cloud',
+                'segmento_fintech_servicos_financeiros': 'Fintech / Financial Services / Legal',
+                'segmento_servicos_rh_coaching': 'HR and Coaching Services',
+                'segmento_industria_manufatura': 'Industry / Manufacturing',
+                'segmento_outros': 'Others',
+
+                // Opção "Não sei"
+                'nao_informar': 'I don\'t know / Prefer not to inform',
+
+                // Ciclo de Vendas
                 'ciclo_menos30': 'Less than 30 days',
                 'ciclo_mais90': 'More than 90 days',
+                
+                // Atingimento Equipe
                 'atingimento_menos60': 'Less than 60%',
                 'atingimento_mais100': 'More than 100%',
+                
+                // Atingimento Individual
                 'atingimento_ind_menos30': 'Less than 30%',
                 'atingimento_ind_mais70': 'More than 70%',
+                
+                // Turnover
                 'turnover_baixo': 'Low (less than 10% per year)',
                 'turnover_moderado': 'Moderate (10–25%)',
                 'turnover_alto': 'High (25–40%)',
-                'turnover_muito_alto': 'Very high (more than 40%)',
+                'turnover_muito_alto': 'Very High (more than 40%)',
+                
+                // Resultados
                 'results_title': 'Your diagnostic is ready!',
-                'results_subtitle': 'Here\'s an overview of your sales operation:',
+                'results_subtitle': 'Hello [Name] from [Company], here is the overview of your sales operation:',
                 'results_axis': 'Axis',
                 'results_status': 'Status',
                 'results_insight': 'Insight',
@@ -1287,14 +1496,16 @@
                 'results_turnover': 'Turnover',
                 'results_recommendation': 'Personalized Recommendation',
                 'results_note': 'Balanced goal and commission structures increase goal attainment by up to 25% and reduce turnover.',
-                'cta_title': 'Want to optimize your goals and commissions?',
-                'cta_description': 'Schedule a conversation with the Salespring team and see how to automate all of this with real-time data.',
-                'cta_button': 'I want to optimize my goals and commissions',
-                'footer_text': 'Goal, commission, and performance management in one place.',
-                'footer_copyright': '© 2025 Salespring. All rights reserved.',
-                'nav_inicio': 'Home',
-                'nav_sobre': 'About',
-                'nav_contato': 'Contact',
+                
+                // CTA Final Amigável
+                'cta_title_friendly': 'Want to discuss how to make your operation even more predictable and profitable?',
+                'cta_description_friendly': 'Schedule a free, no-obligation conversation with one of our specialists. Just say "Yes" below!',
+                'cta_question': 'Would you like to receive a free contact to discuss the matter further?',
+                'cta_option_yes': 'Yes, I do!',
+                'cta_option_no': 'No, thank you.',
+                'cta_button_final': 'Finalize and Send Answer',
+
+                // Insights (mantidos do original)
                 'meta_high_risk': 'High Risk',
                 'meta_adjustment': 'Adjustment Needed',
                 'meta_balanced': 'Balanced',
@@ -1315,7 +1526,14 @@
                 'turnover_healthy_insight': 'Your team is stable. Continue maintaining alignment between goals and commissions.',
                 'recommendation_high_risk': 'Your goal and commission structure may be demotivating your team and reducing results. We recommend a complete strategic review to realign capacity, goals, and compensation. With Salespring, you can automate these calculations and track them in real time.',
                 'recommendation_medium_risk': 'Your plan has potential, but fine-tuning can generate more predictability and engagement. Balanced goal and commission structures increase goal attainment by up to 25% and reduce turnover. Salespring can help you automate and track these indicators.',
-                'recommendation_healthy': 'Your operation is well structured! Goals and commissions balanced with the market are essential to keep your team motivated and predictable. With Salespring, you can automate these calculations and gain even more visibility into performance.'
+                'recommendation_healthy': 'Your operation is well structured! Goals and commissions balanced with the market are essential to keep your team motivated and predictable. With Salespring, you can automate these calculations and gain even more visibility into performance.',
+
+                // Navegação e Rodapé
+                'footer_text': 'Goal, commission, and performance management in one place.',
+                'footer_copyright': '© 2025 Salespring. All rights reserved.',
+                'nav_inicio': 'Home',
+                'nav_sobre': 'About',
+                'nav_contato': 'Contact',
             },
             'es': {
                 'welcome_title': 'Bienvenido al Diagnóstico de Metas y Comisiones',
@@ -1331,48 +1549,75 @@
                 'btn_restart': 'Hacer un nuevo diagnóstico',
                 'q1_title': '¿Cuál es su nombre completo?',
                 'q2_title': '¿Cuál es su correo electrónico?',
-                'q3_title': '¿Cuál es su cargo actual?',
-                'q4_title': '¿Cuál es el nombre de su empresa?',
-                'q5_title': '¿En qué segmento opera su empresa?',
-                'q6_title': '¿Cuántas personas componen su equipo de ventas?',
-                'q7_title': '¿Cuál es su meta mensual de ventas?',
-                'q7_hint': 'Ingrese el valor en dólares estadounidenses (USD).',
-                'q8_title': '¿Cuál es su ticket promedio de ventas?',
-                'q9_title': '¿Cuál es su tasa promedio de conversión de leads en clientes?',
-                'q9_hint': 'Por ejemplo: si de 100 leads cierra 5 clientes, ingrese 5%.',
-                'q9_hint2': 'Ingrese solo el número (sin el símbolo %)',
-                'q10_title': '¿Cuántos vendedores están activos hoy?',
-                'q11_title': '¿Cuántos están en ramp-up (menos de 3 meses)?',
-                'q12_title': '¿Cuál es el ciclo de ventas promedio de su operación?',
-                'q13_title': '¿Cuál fue el cumplimiento promedio de meta del equipo en los últimos 3 meses?',
-                'q14_title': '¿Cuál es el salario fijo promedio del vendedor?',
-                'q15_title': '¿Cuál es el porcentaje promedio de comisión sobre ventas?',
-                'q15_hint': 'Ingrese solo el número (sin el símbolo %)',
-                'q16_title': '¿Cuál es la meta individual mensual de cada vendedor?',
-                'q17_title': '¿Cuántos vendedores alcanzan el 100% de su meta mensualmente?',
-                'q18_title': 'La rotación (salida voluntaria) de su equipo de ventas es:',
-                'cargo_founder': 'Fundador / CEO',
-                'cargo_head': 'Jefe de Ventas / Gerente Comercial',
-                'cargo_cmo': 'CMO / Marketing',
-                'cargo_cs': 'CS / Customer Success',
-                'cargo_outro': 'Otro',
-                'segmento_saas': 'SaaS / Tecnología',
-                'segmento_servicos': 'Servicios B2B',
-                'segmento_industria': 'Industria',
-                'segmento_educacao': 'Educación / Capacitación',
-                'segmento_outro': 'Otro',
+                'q2_hint': 'Preferiblemente corporativo para garantizar la entrega de su diagnóstico.',
+                'q3_title': '¿Cuál es su número de teléfono?',
+                'q3_hint': 'Su número de contacto en caso de que solicite una consulta gratuita.',
+                'q4_title': '¿Cuál es su área de especialización?',
+                'q5_title': '¿Cuál es el nombre de su empresa?',
+                'q6_title': '¿En qué segmento opera su empresa?',
+                'q7_title': '¿Cuántas personas componen su equipo de ventas?',
+                'q8_title': '¿Cuál es su meta mensual de ventas?',
+                'q8_hint': 'Ingrese el valor en dólares estadounidenses (USD).',
+                'q9_title': '¿Cuál es su ticket promedio de ventas?',
+                'q10_title': '¿Cuál es su tasa promedio de conversión de leads en clientes?',
+                'q10_hint': 'Por ejemplo: si de 100 leads cierra 5 clientes, ingrese 5.',
+                'q10_hint2': 'Ingrese solo el número (sin el símbolo %)',
+                'q11_title': '¿Cuántos vendedores están activos hoy?',
+                'q12_title': '¿Cuántos están en ramp-up (menos de 3 meses)?',
+                'q13_title': '¿Cuál es el ciclo promedio de ventas de su operación?',
+                'q14_title': '¿Cuál fue el cumplimiento promedio de meta del equipo en los últimos 3 meses?',
+                'q15_title': '¿Cuál es el salario fijo promedio del vendedor?',
+                'q16_title': '¿Cuál es el porcentaje promedio de comisión sobre ventas?',
+                'q16_hint': 'Ingrese solo el número (sin el símbolo %)',
+                'q17_title': '¿Cuál es la meta individual mensual de cada vendedor?',
+                'q18_title': '¿Cuántos vendedores alcanzan el 100% de su meta mensualmente?',
+                'q19_title': 'La rotación (salida voluntaria) de su equipo de ventas es:',
+                'q20_title': '¡Casi listo! ¿Acepta recibir comunicaciones de Salespring?',
+                'opt_in_text': 'Acepto recibir comunicaciones de Salespring. Respetamos su privacidad y solo utilizaremos su información para compartir contenido, productos y servicios relevantes. Puede cancelar la suscripción en cualquier momento. Obtenga más información en nuestra Política de Privacidad.',
+                
+                // Cargos
+                'cargo_lideranca_executiva': 'Liderazgo Ejecutivo (CEO/CRO/CFO/Founder)',
+                'cargo_diretoria_comercial': 'Dirección Comercial/Ventas/RevOps',
+                'cargo_diretoria_marketing': 'Dirección de Marketing',
+                'cargo_diretoria_cs': 'Dirección de Customer Success (CS)',
+                'cargo_gerencia_comercial': 'Gerencia Comercial/Ventas',
+                'cargo_gerencia_marketing': 'Gerencia de Marketing',
+                'cargo_gerencia_cs': 'Gerencia de Customer Success (CS)',
+                'cargo_executivo_vendas': 'Ejecutivo de Ventas / BDR / Vendedor / SDR',
+                'cargo_analista_marketing_cs': 'Analista de Marketing / CS',
+                'cargo_assistente_estagiario': 'Asistente / Pasante / Estudiante',
+
+                // Segmentos
+                'segmento_tecnologia_saas': 'Tecnología / SaaS / Cloud',
+                'segmento_fintech_servicos_financeiros': 'Fintech / Servicios financieros / Legal',
+                'segmento_servicos_rh_coaching': 'Servicios de RR.HH. y Coaching',
+                'segmento_industria_manufatura': 'Industria / Manufactura',
+                'segmento_outros': 'Otros',
+
+                // Opção "Não sei"
+                'nao_informar': 'No sé / Prefiero no informar',
+
+                // Ciclo de Vendas
                 'ciclo_menos30': 'Menos de 30 días',
                 'ciclo_mais90': 'Más de 90 días',
+                
+                // Atingimento Equipe
                 'atingimento_menos60': 'Menos del 60%',
                 'atingimento_mais100': 'Más del 100%',
+                
+                // Atingimento Individual
                 'atingimento_ind_menos30': 'Menos del 30%',
                 'atingimento_ind_mais70': 'Más del 70%',
+                
+                // Turnover
                 'turnover_baixo': 'Bajo (menos del 10% anual)',
                 'turnover_moderado': 'Moderado (10–25%)',
                 'turnover_alto': 'Alto (25–40%)',
                 'turnover_muito_alto': 'Muy alto (más del 40%)',
+                
+                // Resultados
                 'results_title': '¡Su diagnóstico está listo!',
-                'results_subtitle': 'Aquí está el panorama de su operación de ventas:',
+                'results_subtitle': 'Hola [Nombre] de [Empresa], aquí está el panorama de su operación de ventas:',
                 'results_axis': 'Eje',
                 'results_status': 'Estado',
                 'results_insight': 'Insight',
@@ -1381,14 +1626,16 @@
                 'results_turnover': 'Rotación',
                 'results_recommendation': 'Recomendación Personalizada',
                 'results_note': 'Estructuras equilibradas de metas y comisiones aumentan hasta el 25% el cumplimiento de metas y reducen la rotación.',
-                'cta_title': '¿Quiere optimizar sus metas y comisiones?',
-                'cta_description': 'Programe una conversación con el equipo de Salespring y vea cómo automatizar todo esto con datos en tiempo real.',
-                'cta_button': 'Quiero optimizar mis metas y comisiones',
-                'footer_text': 'Gestión de metas, comisiones y desempeño en un solo lugar.',
-                'footer_copyright': '© 2025 Salespring. Todos los derechos reservados.',
-                'nav_inicio': 'Inicio',
-                'nav_sobre': 'Acerca de',
-                'nav_contato': 'Contacto',
+                
+                // CTA Final Amigável
+                'cta_title_friendly': '¿Quiere hablar sobre cómo hacer que su operación sea aún más predecible y rentable?',
+                'cta_description_friendly': 'Programe una conversación gratuita y sin compromiso con uno de nuestros especialistas. ¡Solo diga "Sí" a continuación!',
+                'cta_question': '¿Le gustaría recibir un contacto gratuito para conversar más sobre el tema?',
+                'cta_option_yes': '¡Sí, quiero!',
+                'cta_option_no': 'No, gracias.',
+                'cta_button_final': 'Finalizar y Enviar Respuesta',
+
+                // Insights (mantidos do original)
                 'meta_high_risk': 'Riesgo Alto',
                 'meta_adjustment': 'Ajuste Necesario',
                 'meta_balanced': 'Equilibrada',
@@ -1409,13 +1656,21 @@
                 'turnover_healthy_insight': 'Su equipo es estable. Continúe manteniendo la alineación entre metas y comisiones.',
                 'recommendation_high_risk': 'Su estructura de metas y comisiones puede estar desmotivando a su equipo y reduciendo resultados. Recomendamos una revisión estratégica completa para realinear capacidad, metas y compensación. Con Salespring, puede automatizar estos cálculos y rastrearlos en tiempo real.',
                 'recommendation_medium_risk': 'Su plan tiene potencial, pero los ajustes finos pueden generar más previsibilidad y compromiso. Las estructuras equilibradas de metas y comisiones aumentan hasta el 25% el cumplimiento de metas y reducen la rotación. Salespring puede ayudarle a automatizar y rastrear estos indicadores.',
-                'recommendation_healthy': '¡Su operación está bien estructurada! Las metas y comisiones equilibradas con el mercado son fundamentales para mantener su equipo motivado y predecible. Con Salespring, puede automatizar estos cálculos y obtener aún más visibilidad del desempeño.'
+                'recommendation_healthy': '¡Su operación está bien estructurada! Las metas y comisiones equilibradas con el mercado son fundamentales para mantener su equipo motivado y predecible. Con Salespring, puede automatizar estos cálculos y obtener aún más visibilidad del desempeño.',
+
+                // Navegação e Rodapé
+                'footer_text': 'Gestión de metas, comisiones y desempeño en un solo lugar.',
+                'footer_copyright': '© 2025 Salespring. Todos los derechos reservados.',
+                'nav_inicio': 'Inicio',
+                'nav_sobre': 'Acerca de',
+                'nav_contato': 'Contacto',
             }
         };
 
         let currentScreen = 0;
         let currentLanguage = 'pt-BR';
-        const totalScreens = 18;
+        // Total de telas ajustado para 20 (19 perguntas + 1 opt-in)
+        const totalScreens = 20; 
 
         function changeLanguage(lang) {
             currentLanguage = lang;
@@ -1423,7 +1678,7 @@
             
             // Update active button
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            document.querySelector(`.lang-btn[onclick="changeLanguage('${lang}')"]`).classList.add('active');
             
             // Update all translated elements
             updateTranslations();
@@ -1434,9 +1689,16 @@
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');
                 if (trans[key]) {
-                    element.textContent = trans[key];
+                    // Para o subtítulo personalizado, não alteramos o texto base aqui, apenas o resto
+                    if (element.id !== 'personalizedGreeting') {
+                        element.textContent = trans[key];
+                    }
                 }
             });
+            // Atualiza o placeholder do email
+            document.getElementById('email').placeholder = currentLanguage === 'pt-BR' ? 'seu.email@empresa.com' : 'your.email@company.com';
+            // Atualiza o placeholder do telefone
+            document.getElementById('phone').placeholder = currentLanguage === 'pt-BR' ? '(XX) XXXXX-XXXX' : '+X XXX XXX XXXX';
         }
 
         function startDiagnostic() {
@@ -1453,15 +1715,64 @@
             if (screen) {
                 screen.classList.add('active');
                 currentScreen = screenNumber;
+                
+                // Atualiza a barra de progresso
+                const progress = (screenNumber / totalScreens) * 100;
+                document.querySelector(`#screen${screenNumber} .progress-fill`).style.width = `${progress}%`;
             }
+        }
+
+        function validateScreen(screenNumber) {
+            const screen = document.getElementById(`screen${screenNumber}`);
+            if (!screen) return true;
+
+            const requiredInputs = screen.querySelectorAll('[required]');
+            let isValid = true;
+
+            requiredInputs.forEach(input => {
+                if (input.type === 'radio') {
+                    const radioGroupName = input.name;
+                    const radioGroup = document.querySelectorAll(`input[name="${radioGroupName}"]`);
+                    let isChecked = false;
+                    radioGroup.forEach(radio => {
+                        if (radio.checked) {
+                            isChecked = true;
+                        }
+                    });
+                    if (!isChecked) {
+                        isValid = false;
+                    }
+                } else if (input.type === 'checkbox') {
+                    if (!input.checked) {
+                        isValid = false;
+                    }
+                } else if (input.value.trim() === '') {
+                    isValid = false;
+                }
+            });
+
+            // Validação de e-mail corporativo (simples)
+            if (screenNumber === 2) {
+                const emailInput = document.getElementById('email');
+                const emailValue = emailInput.value.trim();
+                // Regex simples para evitar emails comuns como gmail, hotmail, outlook, etc.
+                const personalEmailRegex = /@(gmail|hotmail|outlook|yahoo|icloud|uol|terra|bol|live)\./i;
+                if (personalEmailRegex.test(emailValue)) {
+                    // Não impede, mas alerta o usuário
+                    console.warn("Email pode ser pessoal. Prosseguindo, mas o ideal é corporativo.");
+                }
+            }
+
+            if (!isValid) {
+                // Adiciona um alerta amigável (já existe no original)
+                return false;
+            }
+            return true;
         }
 
         function nextScreen() {
             if (!validateScreen(currentScreen)) {
-                alert(currentLanguage === 'pt-BR' ? 'Por favor, preencha todos os campos obrigatórios.' : 
-                      currentLanguage === 'pt-PT' ? 'Por favor, preencha todos os campos obrigatórios.' :
-                      currentLanguage === 'en' ? 'Please fill in all required fields.' :
-                      'Por favor, complete todos los campos requeridos.');
+                alert(translations[currentLanguage].alert_fill_fields || 'Por favor, preencha todos os campos obrigatórios.');
                 return;
             }
 
@@ -1483,117 +1794,175 @@
             }
         }
 
-        function validateScreen(screenNumber) {
-            const form = document.getElementById('diagnosticForm');
-            const inputs = form.querySelectorAll(`#screen${screenNumber} input[required], #screen${screenNumber} select[required]`);
-            
-            for (let input of inputs) {
-                if (input.type === 'radio' || input.type === 'checkbox') {
-                    const name = input.name;
-                    const checked = form.querySelector(`input[name="${name}"]:checked`);
-                    if (!checked) return false;
-                } else if (!input.value) {
-                    return false;
-                }
-            }
-            return true;
-        }
-
         function calculateResults() {
+            // 1. Coleta de dados
             const formData = new FormData(document.getElementById('diagnosticForm'));
-            const data = Object.fromEntries(formData);
+            const data = {};
+            for (let [key, value] of formData.entries()) {
+                data[key] = value;
+            }
+            
+            // Adiciona campos não obrigatórios que podem não estar no FormData se não marcados
+            data['opt_in_comunicacao'] = document.getElementById('opt_in_comunicacao').checked ? 'sim' : 'nao';
+            data['opt_in_contato'] = 'nao_respondido'; // Valor inicial antes da tela final
 
-            const metaMensal = parseFloat(data.meta_mensal);
-            const ticketMedio = parseFloat(data.ticket_medio);
-            const conversao = parseFloat(data.conversao) / 100;
-            const vendedoresAtivos = parseFloat(data.vendedores_ativos);
-            const vendedoresRampup = parseFloat(data.vendedores_rampup);
-            const comissaoPercent = parseFloat(data.comissao_percent);
-            const metaIndividual = parseFloat(data.meta_individual);
+            // 2. Cálculo do Diagnóstico (Lógica original mantida)
+            const metaMensal = parseFloat(data.meta_mensal) || 0;
+            const ticketMedio = parseFloat(data.ticket_medio) || 0;
+            const taxaConversao = parseFloat(data.taxa_conversao) / 100 || 0;
+            const vendedoresAtivos = parseInt(data.vendedores_ativos) || 0;
+            const vendedoresRampup = parseInt(data.vendedores_rampup) || 0;
+            const salarioFixo = parseFloat(data.salario_fixo) || 0;
+            const percentualComissao = parseFloat(data.percentual_comissao) / 100 || 0;
+            const metaIndividual = parseFloat(data.meta_individual) || 0;
+            const atingimentoEquipe = data.atingimento_equipe;
+            const atingimentoIndividual = data.atingimento_individual;
+            const turnover = data.turnover;
 
-            const capacidadeBase = vendedoresAtivos * ticketMedio * conversao * 20;
-            const capacidadeAjustada = capacidadeBase * (1 - (vendedoresRampup / vendedoresAtivos) * 0.2);
-            const ratioMeta = metaMensal / capacidadeAjustada;
-
-            let resultMeta, insightMeta;
-            if (data.atingimento === 'menos_60' || ratioMeta > 1.3) {
-                resultMeta = translations[currentLanguage]['meta_high_risk'];
-                insightMeta = translations[currentLanguage]['meta_high_risk_insight'];
-            } else if (data.atingimento === '60-80' || (ratioMeta > 1.1 && ratioMeta <= 1.3)) {
-                resultMeta = translations[currentLanguage]['meta_adjustment'];
-                insightMeta = translations[currentLanguage]['meta_adjustment_insight'];
-            } else {
-                resultMeta = translations[currentLanguage]['meta_balanced'];
-                insightMeta = translations[currentLanguage]['meta_balanced_insight'];
+            // Vendedores Produtivos (ativos - rampup)
+            const vendedoresProdutivos = vendedoresAtivos - vendedoresRampup;
+            
+            // Metas: Cálculo de Metas Realistas (Baseado em Capacidade)
+            // Metas Realistas = Vendedores Produtivos * Meta Individual
+            const metaRealista = vendedoresProdutivos * metaIndividual;
+            
+            let statusMetas = 'meta_balanced';
+            if (metaMensal > metaRealista * 1.2) { // Meta 20% acima da capacidade
+                statusMetas = 'meta_high_risk';
+            } else if (metaMensal > metaRealista * 0.8) { // Meta entre 80% e 120% da capacidade
+                statusMetas = 'meta_balanced';
+            } else { // Meta abaixo de 80% da capacidade
+                statusMetas = 'meta_adjustment';
             }
 
-            let resultComissao, insightComissao;
-            if (comissaoPercent < 4 || data.atingimento_individual === 'menos_30') {
-                resultComissao = translations[currentLanguage]['comissao_low'];
-                insightComissao = translations[currentLanguage]['comissao_low_insight'];
-            } else if (comissaoPercent >= 5 && comissaoPercent <= 10 && (data.atingimento_individual === '30-50' || data.atingimento_individual === '50-70')) {
-                resultComissao = translations[currentLanguage]['comissao_adjustment'];
-                insightComissao = translations[currentLanguage]['comissao_adjustment_insight'];
-            } else if (comissaoPercent >= 6 && comissaoPercent <= 10) {
-                resultComissao = translations[currentLanguage]['comissao_competitive'];
-                insightComissao = translations[currentLanguage]['comissao_competitive_insight'];
-            } else {
-                resultComissao = translations[currentLanguage]['comissao_adjustment'];
-                insightComissao = translations[currentLanguage]['comissao_adjustment_insight'];
+            // Metas: Ajuste baseado no atingimento da equipe (se a meta for muito alta, mas o time bate, é balanced)
+            if (statusMetas === 'meta_high_risk' && atingimentoEquipe === 'mais_100') {
+                statusMetas = 'meta_balanced';
+            } else if (statusMetas === 'meta_adjustment' && atingimentoEquipe === 'menos_60') {
+                statusMetas = 'meta_high_risk'; // Meta baixa, mas não bate -> problema de capacidade/processo
             }
 
-            let resultTurnover, insightTurnover;
-            if (data.turnover === 'muito_alto' || data.turnover === 'alto') {
-                resultTurnover = translations[currentLanguage]['turnover_critical'];
-                insightTurnover = translations[currentLanguage]['turnover_critical_insight'];
-            } else if (data.turnover === 'moderado') {
-                resultTurnover = translations[currentLanguage]['turnover_attention'];
-                insightTurnover = translations[currentLanguage]['turnover_attention_insight'];
-            } else {
-                resultTurnover = translations[currentLanguage]['turnover_healthy'];
-                insightTurnover = translations[currentLanguage]['turnover_healthy_insight'];
+
+            // Comissão: Cálculo de Remuneração Variável (Simples: Fixo vs Variável)
+            // Comissão Ideal (Variável) = 1.5 * Fixo (para SaaS B2B)
+            const comissaoPotencial = (metaIndividual * percentualComissao);
+            
+            let statusComissao = 'comissao_competitive';
+            if (comissaoPotencial < salarioFixo * 0.8) { // Variável muito baixa
+                statusComissao = 'comissao_low';
+            } else if (comissaoPotencial < salarioFixo * 1.2) { // Variável próxima do fixo
+                statusComissao = 'comissao_adjustment';
+            } else { // Variável alta
+                statusComissao = 'comissao_competitive';
             }
 
-            let recommendation;
-            const riskCount = [resultMeta, resultComissao, resultTurnover].filter(r => 
-                r.includes(translations[currentLanguage]['meta_high_risk']) || 
-                r.includes(translations[currentLanguage]['turnover_critical'])
-            ).length;
-
-            if (riskCount >= 2) {
-                recommendation = translations[currentLanguage]['recommendation_high_risk'];
-            } else if (riskCount === 1) {
-                recommendation = translations[currentLanguage]['recommendation_medium_risk'];
-            } else {
-                recommendation = translations[currentLanguage]['recommendation_healthy'];
+            // Comissão: Ajuste baseado no atingimento individual
+            if (statusComissao === 'comissao_competitive' && atingimentoIndividual === 'menos_30') {
+                statusComissao = 'comissao_adjustment'; // Comissão alta, mas não bate -> problema de meta
+            } else if (statusComissao === 'comissao_low' && atingimentoIndividual === 'mais_70') {
+                statusComissao = 'comissao_adjustment'; // Comissão baixa, mas bate -> time motivado, mas risco de saída
             }
 
-            document.getElementById('resultMeta').textContent = resultMeta;
-            document.getElementById('insightMeta').textContent = insightMeta;
-            document.getElementById('resultComissao').textContent = resultComissao;
-            document.getElementById('insightComissao').textContent = insightComissao;
-            document.getElementById('resultTurnover').textContent = resultTurnover;
-            document.getElementById('insightTurnover').textContent = insightTurnover;
-            document.getElementById('recommendationText').textContent = recommendation;
 
-            document.querySelectorAll('.form-screen').forEach(screen => {
-                screen.classList.remove('active');
-            });
+            // Turnover: Lógica de Status
+            let statusTurnover = 'turnover_healthy';
+            if (turnover === 'muito_alto' || turnover === 'alto') {
+                statusTurnover = 'turnover_critical';
+            } else if (turnover === 'moderado') {
+                statusTurnover = 'turnover_attention';
+            }
+
+            // 3. Geração da Recomendação (Lógica original mantida)
+            let recommendationKey = 'recommendation_healthy';
+            if (statusMetas === 'meta_high_risk' || statusComissao === 'comissao_low' || statusTurnover === 'turnover_critical') {
+                recommendationKey = 'recommendation_high_risk';
+            } else if (statusMetas === 'meta_adjustment' || statusComissao === 'comissao_adjustment' || statusTurnover === 'turnover_attention') {
+                recommendationKey = 'recommendation_medium_risk';
+            }
+
+            // 4. Exibição dos Resultados
+            const trans = translations[currentLanguage];
+            
+            // Personalização do título
+            const nome = data.name || 'Pessoa';
+            const empresa = data.empresa || 'Empresa';
+            const personalizedGreetingText = trans.results_subtitle.replace('[Nome]', nome).replace('[Empresa]', empresa);
+            document.getElementById('personalizedGreeting').textContent = personalizedGreetingText;
+
+            // Metas
+            document.getElementById('resultMetas').textContent = trans[statusMetas];
+            document.getElementById('resultMetas').className = `status-badge ${statusMetas === 'meta_high_risk' ? 'status-red' : statusMetas === 'meta_adjustment' ? 'status-yellow' : 'status-green'}`;
+            document.getElementById('insightMetas').textContent = trans[`${statusMetas}_insight`];
+
+            // Comissão
+            document.getElementById('resultComissao').textContent = trans[statusComissao];
+            document.getElementById('resultComissao').className = `status-badge ${statusComissao === 'comissao_low' ? 'status-red' : statusComissao === 'comissao_adjustment' ? 'status-yellow' : 'status-green'}`;
+            document.getElementById('insightComissao').textContent = trans[`${statusComissao}_insight`];
+
+            // Turnover
+            document.getElementById('resultTurnover').textContent = trans[statusTurnover];
+            document.getElementById('resultTurnover').className = `status-badge ${statusTurnover === 'turnover_critical' ? 'status-red' : statusTurnover === 'turnover_attention' ? 'status-yellow' : 'status-green'}`;
+            document.getElementById('insightTurnover').textContent = trans[`${statusTurnover}_insight`];
+
+            // Recomendação
+            document.getElementById('recommendationText').textContent = trans[recommendationKey];
+
+            // 5. Transição para a tela de resultados
+            document.getElementById(`screen${currentScreen}`).classList.remove('active');
             document.getElementById('resultsScreen').classList.add('active');
-
-            window.diagnosticData = {
-                name: data.name,
-                email: data.email,
-                empresa: data.empresa,
-                resultMeta: resultMeta,
-                resultComissao: resultComissao,
-                resultTurnover: resultTurnover
-            };
+            currentScreen = totalScreens + 1; // Marca que estamos na tela de resultados
         }
 
-        function scheduleDemo() {
-            const trans = translations[currentLanguage];
-            alert((currentLanguage === 'pt-BR' || currentLanguage === 'pt-PT' ? 'Obrigado, ' : 'Thank you, ') + window.diagnosticData.name + '!');
+        function submitFinalForm() {
+            // 1. Coleta de dados final (incluindo opt_in_contato)
+            const formData = new FormData(document.getElementById('diagnosticForm'));
+            const data = {};
+            for (let [key, value] of formData.entries()) {
+                data[key] = value;
+            }
+            
+            // Adiciona campos não obrigatórios/finais
+            data['opt_in_comunicacao'] = document.getElementById('opt_in_comunicacao').checked ? 'sim' : 'nao';
+            
+            // Coleta a resposta do CTA final
+            const optInContatoRadio = document.querySelector('input[name="opt_in_contato"]:checked');
+            data['opt_in_contato'] = optInContatoRadio ? optInContatoRadio.value : 'nao_respondido';
+
+            // 2. Envio para o Google Apps Script
+            if (APPS_SCRIPT_URL === 'YOUR_APPS_SCRIPT_URL_HERE') {
+                alert('ERRO: A URL do Google Apps Script não foi configurada. Por favor, siga as instruções.');
+                console.error('APPS_SCRIPT_URL não configurada.');
+                return;
+            }
+
+            // Exibe mensagem de carregamento
+            const finalButton = document.querySelector('.btn-cta');
+            finalButton.textContent = 'Enviando...';
+            finalButton.disabled = true;
+
+            fetch(APPS_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors', // Necessário para Apps Script
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams(data)
+            })
+            .then(response => {
+                // Como o modo é 'no-cors', a resposta não pode ser lida, mas o envio é feito.
+                // Assumimos sucesso e damos feedback ao usuário.
+                alert('Diagnóstico finalizado e dados enviados com sucesso! Agradecemos sua participação.');
+            })
+            .catch(error => {
+                // Em caso de erro de rede, alertamos, mas o Apps Script geralmente não retorna erro de CORS.
+                console.error('Erro ao enviar dados:', error);
+                alert('Ocorreu um erro ao enviar os dados. Por favor, tente novamente.');
+            })
+            .finally(() => {
+                finalButton.textContent = translations[currentLanguage].cta_button_final || 'Finalizar e Enviar Resposta';
+                finalButton.disabled = false;
+                // O formulário permanece na tela de resultados para que o usuário possa reiniciar
+            });
         }
 
         function resetForm() {
@@ -1603,8 +1972,15 @@
             currentScreen = 0;
         }
 
-        // Initialize translations on page load
-        window.addEventListener('DOMContentLoaded', updateTranslations);
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', () => {
+            updateTranslations();
+            // Adiciona o alerta de campos obrigatórios nas traduções
+            translations['pt-BR'].alert_fill_fields = 'Opa! Por favor, preencha todos os campos obrigatórios para avançar.';
+            translations['pt-PT'].alert_fill_fields = 'Ups! Por favor, preencha todos os campos obrigatórios para avançar.';
+            translations['en'].alert_fill_fields = 'Oops! Please fill in all required fields to proceed.';
+            translations['es'].alert_fill_fields = '¡Uy! Por favor, complete todos los campos requeridos para avanzar.';
+        });
     </script>
 </body>
 </html>
